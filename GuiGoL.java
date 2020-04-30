@@ -446,9 +446,13 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
 
       System.out.println("Cells number: " + cells_number);
       System.out.println("Generations: " + generations);
-      System.out.println("Scale Image: " + scaleImage);
+      System.out.println("Ps: " + ps);
+      System.out.println("Pp: " + pp);
+      System.out.println("Pm: " + pm);
+      System.out.println("Np" + np);
 
       System.out.println("Initializer mode: " + initializer_mode);
+      System.out.println("Scale image" + scaleImage);
 
       canvas_template.updateCanvas();
     }
