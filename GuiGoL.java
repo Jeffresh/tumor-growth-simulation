@@ -529,6 +529,26 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
 
     if (e.getSource() == input_variables_textfields[2]) {
       nump = input_variables_textfields[2].getText();
+      ps = Double.parseDouble(nump);
+    }
+
+    if (e.getSource() == input_variables_textfields[3]) {
+      nump = input_variables_textfields[3].getText();
+      pp = Double.parseDouble(nump);
+    }
+
+    if (e.getSource() == input_variables_textfields[4]) {
+      nump = input_variables_textfields[4].getText();
+      pm = Double.parseDouble(nump);
+    }
+
+    if (e.getSource() == input_variables_textfields[5]) {
+      nump = input_variables_textfields[5].getText();
+      np = Double.parseDouble(nump);
+    }
+
+    if (e.getSource() == input_variables_textfields[6]) {
+      nump = input_variables_textfields[6].getText();
       scaleImage = Double.parseDouble(nump);
     }
 
