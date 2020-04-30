@@ -180,8 +180,12 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     private static void initializeInputTextFieldsAndLabels(){
         textfields_and_labels.put("Dimension (NxN): ", "200");//2
         textfields_and_labels.put("Generations: ", "600");//3
-        textfields_and_labels.put("Scale Image: ", "1");
+        textfields_and_labels.put("Ps: ", "1");//3
+        textfields_and_labels.put("Pp: ", "0.25");//3
+        textfields_and_labels.put("Pm: ", "0.2");//3
+        textfields_and_labels.put("Np", "1");
         combobox_labels[0].setLabelFor(generator_list_combo_box);
+        textfields_and_labels.put("Scale Image: ", "1");
     }
     private static void initializeButtonNames(){
         buttons_names = new String[]{"Initialize", "Start", "Stop"};
@@ -363,6 +367,10 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     private static int cfrontier = 0;
     private static int cells_number = 600;
     private static int generations = 600;
+    private static double ps = 1;
+    private static double pp = 0.25;
+    private static double pm = 0.2;
+    private static double np = 1;
     private static double scaleImage = 1;
 
 
