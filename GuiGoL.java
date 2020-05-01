@@ -24,7 +24,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
   private static Map<String, JButton> gui_buttons = new LinkedHashMap<String, JButton>();
   public static Map<String, String> textfields_and_labels = new LinkedHashMap<>();
   private static JComboBox<String> generator_list_combo_box;
-  private static String[] engine_generator_names = {"Random", "Random Island", "Gliders gun"};
+  private static String[] engine_generator_names = {"Custom","A", "B", "C", "D"};
   private static String initializer_mode = "Random";
 
   private JMenuBar createTopBar(Color color, Dimension dimension) {
