@@ -534,26 +534,37 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     if (e.getSource() == input_variables_textfields[2]) {
       nump = input_variables_textfields[2].getText();
       ps = Double.parseDouble(nump);
+      generator_list_combo_box.setSelectedItem("Custom");
+
     }
 
     if (e.getSource() == input_variables_textfields[3]) {
       nump = input_variables_textfields[3].getText();
       pp = Double.parseDouble(nump);
+      generator_list_combo_box.setSelectedItem("Custom");
+
     }
 
     if (e.getSource() == input_variables_textfields[4]) {
       nump = input_variables_textfields[4].getText();
       pm = Double.parseDouble(nump);
+      generator_list_combo_box.setSelectedItem("Custom");
+
     }
 
     if (e.getSource() == input_variables_textfields[5]) {
       nump = input_variables_textfields[5].getText();
       np = Double.parseDouble(nump);
+      generator_list_combo_box.setSelectedItem("Custom");
+
     }
 
     if (e.getSource() == input_variables_textfields[6]) {
       nump = input_variables_textfields[6].getText();
       scaleImage = Double.parseDouble(nump);
+      generator_list_combo_box.setSelectedItem("Custom");
+      ;
+
     }
 
     if (e.getSource() == generator_list_combo_box) {
@@ -561,6 +572,45 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
       String op = (String) cb.getSelectedItem();
       assert op != null;
       initializer_mode = op;
+      ps = 1;
+      input_variables_textfields[2].setText(Double.toString(ps));
+
+      pp = 0.25;
+      input_variables_textfields[3].setText(Double.toString(pp));
+
+      switch (op) {
+        case ("A"):
+          {
+
+            np = 1;
+            input_variables_textfields[4].setText(Double.toString(np));
+            pm = 0.2;
+            input_variables_textfields[5].setText(Double.toString(pm));
+          }
+        case ("B"):
+          {
+            np = 1;
+            input_variables_textfields[4].setText(Double.toString(np));
+            pm = 0.8;
+            input_variables_textfields[5].setText(Double.toString(pm));
+
+          }
+        case ("C"):
+          {
+            np = 2;
+            input_variables_textfields[4].setText(Double.toString(np));
+            pm = 0.2;
+            input_variables_textfields[5].setText(Double.toString(pm));
+
+          }
+        case ("D"):
+          {
+            np = 2;
+            input_variables_textfields[4].setText(Double.toString(np));
+            pm = 0.8;
+            input_variables_textfields[5].setText(Double.toString(pm));
+          }
+      }
     }
   }
 
