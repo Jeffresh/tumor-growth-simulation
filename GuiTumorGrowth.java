@@ -15,7 +15,7 @@ import java.util.Map;
  * @author: Jeffrey Pallarés Núñez.
  * @version: 1.0 23/07/19
  */
-public class GuiGoL extends Frame implements ActionListener, FocusListener {
+public class GuiTumorGrowth extends Frame implements ActionListener, FocusListener {
 
   private static final long serialVersionUID = 1L;
 
@@ -263,13 +263,13 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     }
 
     for (int i = 0; i < num_labels_combobox; i++) {
-      GuiGoL.combobox_labels[i].setFont(new Font(null, Font.PLAIN, 20));
+      GuiTumorGrowth.combobox_labels[i].setFont(new Font(null, Font.PLAIN, 20));
       combo_box_list[i].setFont(new Font(null, Font.PLAIN, 20));
       ((JLabel) combo_box_list[i].getRenderer()).setHorizontalAlignment(JLabel.CENTER);
       c.gridwidth = GridBagConstraints.RELATIVE; // next-to-last
       c.fill = GridBagConstraints.NONE; // reset to default
       c.weightx = 1.0; // reset to default
-      container.add(GuiGoL.combobox_labels[i], c);
+      container.add(GuiTumorGrowth.combobox_labels[i], c);
 
       c.gridwidth = GridBagConstraints.REMAINDER; // end row
       c.fill = GridBagConstraints.NONE;
@@ -305,7 +305,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     JFrame frame = new JFrame("CA1D");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setMinimumSize(new Dimension(500, 500));
-    frame.setJMenuBar(new GuiGoL().createNavBar());
+    frame.setJMenuBar(new GuiTumorGrowth().createNavBar());
 
     int xMax = cells_number;
     int yMax = cells_number;
@@ -314,7 +314,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     canvas_template.setDoubleBuffered(false);
     canvas_template.setPreferredSize(new Dimension(1000, 1000));
 
-    JSplitPane buttons = new GuiGoL().createGuiPanels();
+    JSplitPane buttons = new GuiTumorGrowth().createGuiPanels();
     JSplitPane window = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas_template, buttons);
     window.setOpaque(true);
     window.setOneTouchExpandable(true);
@@ -324,7 +324,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     frame.setContentPane(window);
   }
 
-  private static SwingWorker<Void, GuiGoL> worker;
+  private static SwingWorker<Void, GuiTumorGrowth> worker;
 
   private static MainCanvas canvas_template;
 
@@ -396,7 +396,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
 
     if (e.getSource() == nav_bar.getMenu(1).getItem(0)) {
       worker =
-          new SwingWorker<Void, GuiGoL>() {
+          new SwingWorker<Void, GuiTumorGrowth>() {
             @Override
             protected Void doInBackground() {
               try {
@@ -458,7 +458,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
 
     if (e.getSource() == gui_buttons.get(buttons_names[1])) {
       worker =
-          new SwingWorker<Void, GuiGoL>() {
+          new SwingWorker<Void, GuiTumorGrowth>() {
             @Override
             protected Void doInBackground() {
               try {
@@ -557,7 +557,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
       nump = input_variables_textfields[6].getText();
       scaleImage = Double.parseDouble(nump);
       generator_list_combo_box.setSelectedItem("Custom");
-      ;
     }
 
     if (e.getSource() == generator_list_combo_box) {
@@ -607,6 +606,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
   public static void main(String[] args) {
     // Schedule a job for the event-dispatching thread:
     // creating and showing this application's GUI.
-    javax.swing.SwingUtilities.invokeLater(GuiGoL::createAndShowGUI);
+    javax.swing.SwingUtilities.invokeLater(GuiTumorGrowth::createAndShowGUI);
   }
 }
