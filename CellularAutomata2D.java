@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class CellularAutomata2D implements Runnable
 {
 
-    private static int[][] matrix;
+    private static int[][] ph;
     private static  int[][] actualGen, nextGen;
     private static int[] initialPopulation;
     public static AtomicIntegerArray population_counter;
@@ -32,6 +32,7 @@ public class CellularAutomata2D implements Runnable
     public void plug(MainCanvas ref) { canvasTemplateRef = ref; }
     public void plugPopulationChart(AnalyticsMultiChart ref) { population_chart_ref = ref;}
 
+
     private static int width, height;
 
     public static int states_number = 2;
@@ -41,6 +42,17 @@ public class CellularAutomata2D implements Runnable
     public static int generations;
     private static String initializerMode;
     private static Random randomGenerator;
+
+    private static double ps = 1; // Probability of cell survival.
+    private static double pp = 0.25; // Probability of cell proliferation.
+    private static double pm = 0.2; // Probability of cell migration.
+    private static double np = 1; // Total PH needed to proliferate.
+    private static double scaleImage = 1;
+    private static double pd = 0; // Probability of cell death.
+    private static double pq = 1; // Probability of cell quiescence.
+    private static double rr = 1; // Random value to determine survival.
+    private static double rrm = 1; // Random value to determine migration.
+    private static double rrp = 1; // Random value to determine proliferation.
 
     private int task_number;
     private static int total_tasks;
@@ -241,14 +253,16 @@ public class CellularAutomata2D implements Runnable
 
     }
 
-    public void initializer (int cells_number, int generations, int cfrontier, String initializerMode ) {
+    public void initializer (int cells_number,
+                             int generations, int cfrontier, String initializerMode,
+                             double ps, double pp, double pm, double np) {
         randomGenerator = new Random();
 
         width = cells_number;
         height = cells_number;
 
         actualGen = new int[width][width]; nextGen = new int[width][width];
-        matrix = new int[height][width];
+        ph = new int[height][width];
 
         population_counter = new AtomicIntegerArray(states_number);
 
@@ -256,6 +270,13 @@ public class CellularAutomata2D implements Runnable
         CellularAutomata2D.generations = generations;
         CellularAutomata2D.cfrontier = cfrontier;
         CellularAutomata2D.initializerMode = initializerMode;
+
+        CellularAutomata2D.ps = ps;
+        CellularAutomata2D.pp = pp;
+        CellularAutomata2D.pm = pm;
+        CellularAutomata2D.np = np;
+        CellularAutomata2D.pd =  1 - ps;
+        CellularAutomata2D.pq = 1 - pm - pp;
 
         population = new LinkedList[states_number];
         initialPopulation = new int[states_number];
