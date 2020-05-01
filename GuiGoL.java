@@ -24,7 +24,7 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
   private static Map<String, JButton> gui_buttons = new LinkedHashMap<String, JButton>();
   public static Map<String, String> textfields_and_labels = new LinkedHashMap<>();
   private static JComboBox<String> generator_list_combo_box;
-  private static String[] engine_generator_names = {"Custom","A", "B", "C", "D"};
+  private static String[] engine_generator_names = {"Custom", "A", "B", "C", "D"};
   private static String initializer_mode = "Random";
 
   private JMenuBar createTopBar(Color color, Dimension dimension) {
@@ -33,7 +33,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
     top_bar.setOpaque(true);
     top_bar.setBackground(color);
     top_bar.setPreferredSize(dimension);
-
     return top_bar;
   }
 
@@ -511,7 +510,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
       JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
     }
 
-    // Neighborhood Range
     try {
       double nump_value;
       if (e.getSource() == input_variables_textfields[1]) {
@@ -535,28 +533,24 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
       nump = input_variables_textfields[2].getText();
       ps = Double.parseDouble(nump);
       generator_list_combo_box.setSelectedItem("Custom");
-
     }
 
     if (e.getSource() == input_variables_textfields[3]) {
       nump = input_variables_textfields[3].getText();
       pp = Double.parseDouble(nump);
       generator_list_combo_box.setSelectedItem("Custom");
-
     }
 
     if (e.getSource() == input_variables_textfields[4]) {
       nump = input_variables_textfields[4].getText();
       pm = Double.parseDouble(nump);
       generator_list_combo_box.setSelectedItem("Custom");
-
     }
 
     if (e.getSource() == input_variables_textfields[5]) {
       nump = input_variables_textfields[5].getText();
       np = Double.parseDouble(nump);
       generator_list_combo_box.setSelectedItem("Custom");
-
     }
 
     if (e.getSource() == input_variables_textfields[6]) {
@@ -564,7 +558,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
       scaleImage = Double.parseDouble(nump);
       generator_list_combo_box.setSelectedItem("Custom");
       ;
-
     }
 
     if (e.getSource() == generator_list_combo_box) {
@@ -581,7 +574,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
       switch (op) {
         case ("A"):
           {
-
             np = 1;
             input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.2;
@@ -593,7 +585,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
             input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.8;
             input_variables_textfields[5].setText(Double.toString(pm));
-
           }
         case ("C"):
           {
@@ -601,7 +592,6 @@ public class GuiGoL extends Frame implements ActionListener, FocusListener {
             input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.2;
             input_variables_textfields[5].setText(Double.toString(pm));
-
           }
         case ("D"):
           {
