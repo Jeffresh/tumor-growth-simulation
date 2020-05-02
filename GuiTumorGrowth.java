@@ -383,14 +383,14 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
       //      frame.remove(window);
       value = 2;
       deleteCanvasLabels(input_variables_labels);
-      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode);
+      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
       canvas_template.updateCanvas();
     }
 
     if (e.getSource() == nav_bar.getMenu(0).getItem(1)) {
       value = 3;
       deleteCanvasLabels(input_variables_labels);
-      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode);
+      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm ,np);
       canvas_template.updateCanvas();
     }
 
@@ -431,7 +431,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
       System.out.println("Cfrontier " + cfrontier);
       MainCanvas.task = new CellularAutomata2D();
       MainCanvas.task.plug(canvas_template);
-      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode);
+      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
       MainCanvas.setDimensions(cells_number, cells_number);
       if (scaleImage >= 1) {
         MainCanvas.setScaleRate(scaleImage);
