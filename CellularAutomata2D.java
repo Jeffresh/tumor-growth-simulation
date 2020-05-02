@@ -349,14 +349,18 @@ public class CellularAutomata2D implements Runnable {
 
   public boolean cellProliferates(int i, int j) {
     rrp = Math.random();
-      
+
     if(rrp < pp)
       ph[i][j]++;
     return ph[i][j] >= np;
 
   }
 
-
+  public boolean cellMigrates() {
+    rrm = Math.random();
+    return 	rrm < pm;
+  }
+  
   public LinkedList<Double>[] nextGen(int actual_gen) {
 
     local_population_counter = new int[states_number];
