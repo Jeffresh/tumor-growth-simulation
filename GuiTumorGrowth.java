@@ -448,7 +448,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
       System.out.println("Ps: " + ps);
       System.out.println("Pp: " + pp);
       System.out.println("Pm: " + pm);
-      System.out.println("Np" + np);
+      System.out.println("Np: " + np);
 
       System.out.println("Initializer mode: " + initializer_mode);
       System.out.println("Scale image" + scaleImage);
@@ -570,35 +570,37 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
       pp = 0.25;
       input_variables_textfields[3].setText(Double.toString(pp));
 
-      switch (op) {
+      switch (initializer_mode) {
         case ("A"):
           {
-            np = 1;
-            input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.2;
-            input_variables_textfields[5].setText(Double.toString(pm));
+            np = 1;
+            input_variables_textfields[4].setText(Double.toString(pm));
+            input_variables_textfields[5].setText(Double.toString(np));
           }
         case ("B"):
           {
-            np = 1;
-            input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.8;
-            input_variables_textfields[5].setText(Double.toString(pm));
+            np = 1;
+            input_variables_textfields[4].setText(Double.toString(pm));
+            input_variables_textfields[5].setText(Double.toString(np));
           }
         case ("C"):
           {
-            np = 2;
-            input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.2;
-            input_variables_textfields[5].setText(Double.toString(pm));
+            np = 2;
+            input_variables_textfields[4].setText(Double.toString(pm));
+            input_variables_textfields[5].setText(Double.toString(np));
           }
         case ("D"):
           {
-            np = 2;
-            input_variables_textfields[4].setText(Double.toString(np));
             pm = 0.8;
-            input_variables_textfields[5].setText(Double.toString(pm));
+            np = 2;
+            input_variables_textfields[4].setText(Double.toString(pm));
+            input_variables_textfields[5].setText(Double.toString(np));
           }
+        default:
+          System.out.println(op);
       }
     }
   }
