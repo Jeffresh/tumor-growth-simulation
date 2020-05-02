@@ -342,6 +342,12 @@ public class CellularAutomata2D implements Runnable {
             + actualGen[i][(j - 1 + height) % height]);
   }
 
+  private boolean cell_survives() {
+    rr = Math.random();
+    return rr < ps;
+  }
+
+
   public LinkedList<Double>[] nextGen(int actual_gen) {
 
     local_population_counter = new int[states_number];
