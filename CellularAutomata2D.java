@@ -222,6 +222,7 @@ public class CellularAutomata2D implements Runnable {
       double pp,
       double pm,
       double np) {
+
     randomGenerator = new Random();
 
     width = cells_number;
@@ -249,7 +250,6 @@ public class CellularAutomata2D implements Runnable {
     initialPopulation = new int[states_number];
 
     CellularAutomata2D.initializeState(initializerMode);
-
     for (int i = 0; i < states_number; i++) {
       population[i] = new LinkedList<Double>();
     }
@@ -311,6 +311,11 @@ public class CellularAutomata2D implements Runnable {
   public int getCellValue(int i, int j) {
     int cellsAlive = computeVonNeumannNeighborhood(i, j);
     return transitionFunction(cellsAlive, i, j);
+  }
+
+  private int probabilityDenominator(int i, int j) {
+    return 4 - (actualGen[(i+1+height)%height][j] + actualGen[(i-1+height)%height][j] +
+            actualGen[i][(j-1+height)%height] + actualGen[i][(j-1+height)%height]);
   }
 
   public LinkedList<Double>[] nextGen(int actual_gen) {
