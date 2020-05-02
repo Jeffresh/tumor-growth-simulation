@@ -342,9 +342,18 @@ public class CellularAutomata2D implements Runnable {
             + actualGen[i][(j - 1 + height) % height]);
   }
 
-  private boolean cell_survives() {
+  private boolean cellSurvives() {
     rr = Math.random();
     return rr < ps;
+  }
+
+  public boolean cellProliferates(int i, int j) {
+    rrp = Math.random();
+      
+    if(rrp < pp)
+      ph[i][j]++;
+    return ph[i][j] >= np;
+
   }
 
 
