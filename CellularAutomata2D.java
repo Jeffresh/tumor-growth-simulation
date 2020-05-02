@@ -169,11 +169,32 @@ public class CellularAutomata2D implements Runnable {
     initialPopulation[1] = nCells;
   }
 
+  private static void caseAInitializer() {
+    actualGen[width / 2][height / 2] = 1;
+    np = 1;
+    pm = 0.2;
+  }
+
+  private static void caseBInitializer() {
+    actualGen[width / 2][height / 2] = 1;
+    np = 1;
+    pm = 0.8;
+  }
+
+  private static void caseCInitializer() {
+    actualGen[width / 2][height / 2] = 1;
+    np = 2;
+    pm = 0.2;
+  }
+
+  private static void caseDInitializer() {
+    actualGen[width / 2][height / 2] = 1;
+    np = 2;
+    pm = 0.8;
+  }
+
   private static void initializeState(String initializerMode) {
     switch (initializerMode) {
-      case "Custom":
-        randomInitializer();
-        break;
       case "A":
         caseAInitializer();
         break;
