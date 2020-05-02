@@ -313,6 +313,23 @@ public class CellularAutomata2D implements Runnable {
     return transitionFunction(cellsAlive, i, j);
   }
 
+  private double P1(int i, int j) {
+    return getProbability(i,j,-1,0);
+  }
+
+  private double P2(int i, int j) {
+    return getProbability(i,j,1,0);
+  }
+
+  private double P3(int i, int j) {
+    return getProbability(i,j,0,-1);
+  }
+
+  private double P4(int i, int j) {
+    return getProbability(i,j,0,1);
+  }
+
+
   private double getProbability(int i , int j, int posI, int posJ) {
     return (1 - actualGen[(i+posI +width)%width][(j+posJ +height)%height])/(double)probabilityDenominator(i,j);
   }
