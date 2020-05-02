@@ -578,6 +578,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
             input_variables_textfields[4].setText(Double.toString(pm));
             input_variables_textfields[5].setText(Double.toString(np));
           }
+          break;
         case ("B"):
           {
             pm = 0.8;
@@ -585,6 +586,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
             input_variables_textfields[4].setText(Double.toString(pm));
             input_variables_textfields[5].setText(Double.toString(np));
           }
+          break;
         case ("C"):
           {
             pm = 0.2;
@@ -592,6 +594,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
             input_variables_textfields[4].setText(Double.toString(pm));
             input_variables_textfields[5].setText(Double.toString(np));
           }
+          break;
         case ("D"):
           {
             pm = 0.8;
@@ -599,8 +602,10 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
             input_variables_textfields[4].setText(Double.toString(pm));
             input_variables_textfields[5].setText(Double.toString(np));
           }
+          break;
         default:
           System.out.println(op);
+          break;
       }
     }
   }
