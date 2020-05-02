@@ -226,9 +226,9 @@ public class CellularAutomata2D implements Runnable {
     width = cells_number;
     height = cells_number;
 
-    actualGen = new int[width][width];
-    nextGen = new int[width][width];
-    ph = new int[height][width];
+    actualGen = new int[width][height];
+    nextGen = new int[width][height];
+    ph = new int[width][height];
 
     population_counter = new AtomicIntegerArray(states_number);
 
