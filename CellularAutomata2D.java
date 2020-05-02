@@ -104,6 +104,7 @@ public class CellularAutomata2D implements Runnable {
 
         if (barrier.getParties() == 0) barrier.reset();
       } catch (Exception e) {
+        System.out.println(e.toString());
       }
     }
   }
