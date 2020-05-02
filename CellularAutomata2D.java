@@ -175,18 +175,19 @@ public class CellularAutomata2D implements Runnable {
         randomInitializer();
         break;
       case "A":
-        randomIslandInitializer();
+        caseAInitializer();
         break;
       case "B":
-        gliderGunInitializer();
+        caseBInitializer();
         break;
       case "C":
-        gliderGunInitializer();
+        caseCInitializer();
         break;
       case "D":
-        gliderGunInitializer();
+        caseDInitializer();
         break;
       default:
+        randomInitializer();
     }
   }
 
