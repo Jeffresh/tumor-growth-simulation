@@ -400,15 +400,15 @@ public class CellularAutomata2D implements Runnable {
     }
 
     if(migration) {
-      updatePosition(i,j,0 ,0,nextPh, actualPh[i][j]);
+      updatePosition(i,j,posI ,posJ,nextPh, actualPh[i][j]);
       updatePosition(i,j, 0, 0, nextGen, 0);
     }
     else {
-      updatePosition(i,j,0 ,0,nextPh, 0);
       updatePosition(i,j,posI ,posJ,nextPh, 0);
       updatePosition(i,j, 0, 0, nextGen, 1);
 
     }
+    updatePosition(i,j,0 ,0,nextPh, 0);
     updatePosition(i,j, posI , posJ, nextGen, 1);
     local_population_counter[nextGen[i][j]]++;
   }
