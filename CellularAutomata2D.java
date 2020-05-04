@@ -143,12 +143,6 @@ public class CellularAutomata2D implements Runnable {
     return population;
   }
 
-  public int getCellValue(int i, int j) {
-    int cellsAlive = computeVonNeumannNeighborhood(i, j);
-    return transitionFunction(cellsAlive, i, j);
-  }
-
-
   private static void customInitializer() {
     actualGen[height / 2][width / 2] = 1;
   }
@@ -257,17 +251,6 @@ public class CellularAutomata2D implements Runnable {
 
     return cellsAlive;
   }
-
-  private int transitionFunction(int cellsAlive, int i, int j) {
-    int transitionFunctionValue;
-
-    if (cellsAlive < 2 || cellsAlive > 3) transitionFunctionValue = 0;
-    else if (cellsAlive == 2) transitionFunctionValue = actualGen[i][j];
-    else transitionFunctionValue = 1;
-
-    return transitionFunctionValue;
-  }
-
 
   private double P1(int i, int j) {
     return getProbability(i, j, -1, 0);
