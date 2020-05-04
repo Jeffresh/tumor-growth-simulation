@@ -148,14 +148,8 @@ public class CellularAutomata2D implements Runnable {
 
 
 
-  private static void randomInitializer() {
-    int nCells = (height * width) / 2;
-    for (int i = 0; i < nCells; i++) {
-      actualGen[randomGenerator.nextInt(height)][randomGenerator.nextInt(width)] = 1;
-    }
-
-    initialPopulation[0] = height * height - nCells;
-    initialPopulation[1] = nCells;
+  private static void customInitializer() {
+    actualGen[height / 2][width / 2] = 1;
   }
 
   private static void caseAInitializer() {
@@ -197,7 +191,7 @@ public class CellularAutomata2D implements Runnable {
         caseDInitializer();
         break;
       default:
-        randomInitializer();
+        customInitializer();
     }
   }
 
