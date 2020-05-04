@@ -214,7 +214,9 @@ public class CellularAutomata2D implements Runnable {
 
     actualGen = new int[height][width];
     nextGen = new int[height][width];
-    ph = new int[height][width];
+    actualPh = new int[height][width];
+    nextPh = new int[height][width];
+
 
     population_counter = new AtomicIntegerArray(states_number);
 
@@ -302,8 +304,8 @@ public class CellularAutomata2D implements Runnable {
     rrp = Math.random();
 
     if(rrp < pp)
-      ph[i][j]++;
-    return ph[i][j] >= np;
+      actualPh[i][j]++;
+    return actualPh[i][j] >= np;
 
   }
 
