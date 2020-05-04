@@ -149,7 +149,6 @@ public class CellularAutomata2D implements Runnable {
   }
 
 
-
   private static void customInitializer() {
     actualGen[height / 2][width / 2] = 1;
   }
@@ -427,10 +426,10 @@ public class CellularAutomata2D implements Runnable {
       this.local_population_counter[i] = 0;
     }
 
-    for (int i = 0; i < width; i++)
+    for (int i = 0; i < width; i++) {
       for (int j = in; j < fn; j++) {
         if (abort) break;
-        if (cellSurvives(i,j)) {
+        if (cellSurvives(i, j)) {
           nextGen[i][j] = 1;
           if (cellProliferates(i, j)) {
             rr = Math.random();
@@ -446,6 +445,7 @@ public class CellularAutomata2D implements Runnable {
           nextGen[i][j] = 0;
         }
       }
+    }
     return population;
   }
 }
