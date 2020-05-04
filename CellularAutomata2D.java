@@ -368,6 +368,9 @@ public class CellularAutomata2D implements Runnable {
     updateDirection(i,j,position,false);
   }
 
+  public static void migrates(int i, int j, int position) {
+    updateDirection(i, j, position, true);
+  }
   private static void updateDirection(int i, int j, int position, boolean migration) {
     int posI =0, posJ =0;
     switch (position) {
