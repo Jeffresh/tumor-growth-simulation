@@ -365,9 +365,50 @@ public class CellularAutomata2D implements Runnable {
   }
 
 
+  private static void updateDirection(int i, int j, int position, boolean migration) {
+    int posI =0, posJ =0;
+    switch (position) {
+      case 1: {
+        posI = -1;
+        posJ = 0;
+        break;
+      }
+      case 2: {
+        posI = 0;
+        posJ = 1;
+        break;
+      }
+      case 3: {
+        posI = 0;
+        posJ = 1;
+      }
+      case 4: {
+        posI= 0;
+        posJ = -1;
+      }
+    }
+
+    if(migration) {
+      updatePosition(i,j,0 ,0,nextPh, actualPh[i][j]);
+      updatePosition(i,j, posI, posJ, nextGen, 0);
+    }
+    else {
+      updatePosition(i,j,0 ,0,nextPh, 0);
+      updatePosition(i,j,posI ,posJ,nextPh, 0);
+      updatePosition(i,j, 0, 0, nextGen, 1);
+
+    }
+    updatePosition(i,j, posI , posJ, nextGen, 1);
+
+  }
+
   private static void updatePosition(int i, int j, int posI, int posJ, int[][] matrix, int value) {
     matrix[(i + posI + height) % height][(j + posJ + width) % width] = value;
   }
+
+
+
+
   public LinkedList<Double>[] nextGen(int actual_gen) {
 
     local_population_counter = new int[states_number];
