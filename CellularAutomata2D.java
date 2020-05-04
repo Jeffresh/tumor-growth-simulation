@@ -155,20 +155,21 @@ public class CellularAutomata2D implements Runnable {
 
   private static void caseBInitializer() {
     actualGen[height / 2][width / 2] = 1;
-    np = 1;
     pm = 0.8;
+    np = 1;
   }
 
   private static void caseCInitializer() {
     actualGen[height / 2][width / 2] = 1;
-    np = 2;
     pm = 0.2;
+    np = 2;
+
   }
 
   private static void caseDInitializer() {
     actualGen[height / 2][width / 2] = 1;
-    np = 2;
     pm = 0.8;
+    np = 2;
   }
 
   private static void initializeState(String initializerMode) {
