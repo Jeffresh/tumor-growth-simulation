@@ -38,9 +38,10 @@ public class CellularAutomata2D implements Runnable {
   }
 
   public static void changeRefs() {
-    int[][] aux = actualGen;
+    actualPh = nextPh;
+    nextPh = new int[height][width];
     actualGen = nextGen;
-    nextGen = aux;
+    nextGen = new int[height][width];
   }
 
   public static void stop() {
