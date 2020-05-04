@@ -295,9 +295,9 @@ public class CellularAutomata2D implements Runnable {
     return 4 - computeVonNeumannNeighborhood(i,j);
   }
 
-  private boolean cellSurvives() {
+  private boolean cellSurvives(int i, int j) {
     rr = Math.random();
-    return rr < ps;
+    return (rr < ps && actualGen[i][j] == i);
   }
 
   public boolean cellProliferates(int i, int j) {
