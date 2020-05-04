@@ -385,12 +385,14 @@ public class CellularAutomata2D implements Runnable {
         break;
       }
       case 3: {
-        posI = 0;
-        posJ = 1;
+        posI = 1;
+        posJ = 0;
+        break;
       }
       case 4: {
         posI= 0;
         posJ = -1;
+        break;
       }
     }
 
