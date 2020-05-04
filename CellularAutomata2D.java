@@ -36,6 +36,16 @@ public class CellularAutomata2D implements Runnable {
     population_chart_ref = ref;
   }
 
+  public static void changeRefs() {
+    int[][] aux = actualGen;
+    actualGen = nextGen;
+    nextGen = aux;
+  }
+
+  public static void stop() {
+    abort = true;
+  }
+
   private static int width, height;
 
   public static int states_number = 2;
@@ -109,9 +119,6 @@ public class CellularAutomata2D implements Runnable {
     }
   }
 
-  public int[] getInitialPopulation() {
-    return initialPopulation;
-  }
 
   public CellularAutomata2D() {}
 
@@ -126,39 +133,20 @@ public class CellularAutomata2D implements Runnable {
     if (total_tasks == task_number) fn = cells_number;
   }
 
-  public static void next_gen_concurrent(int nt, int g) {
-    gens = g;
-
-    size_pool = nt;
-
-    barrier = new CyclicBarrier(size_pool);
-    total_tasks = size_pool;
-
-    myPool =
-        new ThreadPoolExecutor(
-            size_pool,
-            size_pool,
-            60000L,
-            TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<Runnable>());
-    CellularAutomata2D[] tareas = new CellularAutomata2D[nt];
-
-    for (int t = 0; t < nt; t++) {
-      tareas[t] = new CellularAutomata2D(t + 1);
-      myPool.execute(tareas[t]);
-    }
-
-    myPool.shutdown();
-    try {
-      myPool.awaitTermination(10, TimeUnit.HOURS);
-    } catch (Exception e) {
-      System.out.println(e.toString());
-    }
+  public int[] getInitialPopulation() {
+    return initialPopulation;
   }
 
   public LinkedList<Double>[] getPopulation() {
     return population;
   }
+
+  public int getCellValue(int i, int j) {
+    int cellsAlive = computeVonNeumannNeighborhood(i, j);
+    return transitionFunction(cellsAlive, i, j);
+  }
+
+
 
   private static void randomInitializer() {
     int nCells = (height * width) / 2;
@@ -261,23 +249,6 @@ public class CellularAutomata2D implements Runnable {
       CellularAutomata2D.population_chart_ref.plot();
   }
 
-  public static void changeRefs() {
-    int[][] aux = actualGen;
-    actualGen = nextGen;
-    nextGen = aux;
-  }
-
-  public static void stop() {
-    abort = true;
-  }
-
-  public static LinkedList<Double>[] caComputation(int nGen) {
-    abort = false;
-    generations = nGen;
-    next_gen_concurrent(8, nGen);
-
-    return population;
-  }
 
   private int computeVonNeumannNeighborhood(int i, int j) {
     int cellsAlive = 0;
@@ -308,10 +279,6 @@ public class CellularAutomata2D implements Runnable {
     return transitionFunctionValue;
   }
 
-  public int getCellValue(int i, int j) {
-    int cellsAlive = computeVonNeumannNeighborhood(i, j);
-    return transitionFunction(cellsAlive, i, j);
-  }
 
   private double P1(int i, int j) {
     return getProbability(i, j, -1, 0);
@@ -359,6 +326,44 @@ public class CellularAutomata2D implements Runnable {
   public boolean cellMigrates() {
     rrm = Math.random();
     return 	rrm < pm;
+  }
+
+  public static void next_gen_concurrent(int nt, int g) {
+    gens = g;
+
+    size_pool = nt;
+
+    barrier = new CyclicBarrier(size_pool);
+    total_tasks = size_pool;
+
+    myPool =
+            new ThreadPoolExecutor(
+                    size_pool,
+                    size_pool,
+                    60000L,
+                    TimeUnit.MILLISECONDS,
+                    new LinkedBlockingQueue<Runnable>());
+    CellularAutomata2D[] tareas = new CellularAutomata2D[nt];
+
+    for (int t = 0; t < nt; t++) {
+      tareas[t] = new CellularAutomata2D(t + 1);
+      myPool.execute(tareas[t]);
+    }
+
+    myPool.shutdown();
+    try {
+      myPool.awaitTermination(10, TimeUnit.HOURS);
+    } catch (Exception e) {
+      System.out.println(e.toString());
+    }
+  }
+
+  public static LinkedList<Double>[] caComputation(int nGen) {
+    abort = false;
+    generations = nGen;
+    next_gen_concurrent(8, nGen);
+
+    return population;
   }
   
   public LinkedList<Double>[] nextGen(int actual_gen) {
