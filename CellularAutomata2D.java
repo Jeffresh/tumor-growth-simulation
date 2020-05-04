@@ -297,7 +297,7 @@ public class CellularAutomata2D implements Runnable {
 
   private boolean cellSurvives(int i, int j) {
     rr = Math.random();
-    return (rr < ps && actualGen[i][j] == i);
+    return (rr < ps && actualGen[i][j] == 1);
   }
 
   public boolean cellProliferates(int i, int j) {
