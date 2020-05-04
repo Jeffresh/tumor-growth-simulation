@@ -161,9 +161,9 @@ public class CellularAutomata2D implements Runnable {
   }
 
   private static void randomInitializer() {
-    int nCells = (height * height) / 2;
+    int nCells = (height * width) / 2;
     for (int i = 0; i < nCells; i++) {
-      actualGen[randomGenerator.nextInt(height)][randomGenerator.nextInt(height)] = 1;
+      actualGen[randomGenerator.nextInt(height)][randomGenerator.nextInt(width)] = 1;
     }
 
     initialPopulation[0] = height * height - nCells;
@@ -171,25 +171,25 @@ public class CellularAutomata2D implements Runnable {
   }
 
   private static void caseAInitializer() {
-    actualGen[width / 2][height / 2] = 1;
+    actualGen[height / 2][width / 2] = 1;
     np = 1;
     pm = 0.2;
   }
 
   private static void caseBInitializer() {
-    actualGen[width / 2][height / 2] = 1;
+    actualGen[height / 2][width / 2] = 1;
     np = 1;
     pm = 0.8;
   }
 
   private static void caseCInitializer() {
-    actualGen[width / 2][height / 2] = 1;
+    actualGen[height / 2][width / 2] = 1;
     np = 2;
     pm = 0.2;
   }
 
   private static void caseDInitializer() {
-    actualGen[width / 2][height / 2] = 1;
+    actualGen[height / 2][width / 2] = 1;
     np = 2;
     pm = 0.8;
   }
@@ -228,9 +228,9 @@ public class CellularAutomata2D implements Runnable {
     width = cells_number;
     height = cells_number;
 
-    actualGen = new int[width][height];
-    nextGen = new int[width][height];
-    ph = new int[width][height];
+    actualGen = new int[height][width];
+    nextGen = new int[height][width];
+    ph = new int[height][width];
 
     population_counter = new AtomicIntegerArray(states_number);
 
@@ -330,7 +330,7 @@ public class CellularAutomata2D implements Runnable {
   }
 
   private double getProbability(int i, int j, int posI, int posJ) {
-    return (1 - actualGen[(i + posI + width) % width][(j + posJ + height) % height])
+    return (1 - actualGen[(i + posI + height) % height][(j + posJ + width) % width])
         / (double) probabilityDenominator(i, j);
   }
 
@@ -338,8 +338,8 @@ public class CellularAutomata2D implements Runnable {
     return 4
         - (actualGen[(i + 1 + height) % height][j]
             + actualGen[(i - 1 + height) % height][j]
-            + actualGen[i][(j - 1 + height) % height]
-            + actualGen[i][(j - 1 + height) % height]);
+            + actualGen[i][(j - 1 + width) % width]
+            + actualGen[i][(j - 1 + width) % width]);
   }
 
   private boolean cellSurvives() {
