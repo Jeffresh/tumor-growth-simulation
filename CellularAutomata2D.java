@@ -329,7 +329,7 @@ public class CellularAutomata2D implements Runnable {
   public static LinkedList<Double>[] caComputation(int nGen) {
     abort = false;
     generations = nGen;
-    next_gen_concurrent(8, nGen);
+    next_gen_concurrent(1, nGen);
 
     return population;
   }
