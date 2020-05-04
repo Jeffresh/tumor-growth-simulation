@@ -247,18 +247,10 @@ public class CellularAutomata2D implements Runnable {
   private int computeVonNeumannNeighborhood(int i, int j) {
     int cellsAlive = 0;
 
-    if (cfrontier == 0) {
-      for (int x = i - 1; x <= i + 1; x++) {
-        for (int y = j - 1; y <= j + 1; y++) {
-          if ((x >= 0 && x < width)
-              && (y >= 0 && y < width)
-              && ((x != i) || (y != j))
-              && (actualGen[x][y] == 1)) cellsAlive++;
-        }
-      }
-    } else {
-      // TODO: implement cilindrical frontier
-    }
+    cellsAlive = actualGen[(i + 1 + height) % height][j]
+            + actualGen[(i - 1 + height) % height][j]
+            + actualGen[i][(j - 1 + width) % width]
+            + actualGen[i][(j - 1 + width) % width];
 
     return cellsAlive;
   }
@@ -296,11 +288,7 @@ public class CellularAutomata2D implements Runnable {
   }
 
   private int probabilityDenominator(int i, int j) {
-    return 4
-        - (actualGen[(i + 1 + height) % height][j]
-            + actualGen[(i - 1 + height) % height][j]
-            + actualGen[i][(j - 1 + width) % width]
-            + actualGen[i][(j - 1 + width) % width]);
+    return 4 - computeVonNeumannNeighborhood(i,j);
   }
 
   private boolean cellSurvives() {
