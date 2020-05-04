@@ -347,7 +347,22 @@ public class CellularAutomata2D implements Runnable {
 
     return population;
   }
-  
+
+  public int getDirection(double probability, int i, int j) {
+
+   if (0 < probability && probability <= P1(i,j))
+     return 3;
+   else if( probability <= P1(i,j)+ P2(i,j))
+     return 1;
+   else if(probability <= P1(i,j) + P2(i,j) + P3(i,j))
+     return 4;
+   else if(probability <=1 )
+     return 2;
+
+   return 0;
+  }
+
+
   public LinkedList<Double>[] nextGen(int actual_gen) {
 
     local_population_counter = new int[states_number];
