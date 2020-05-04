@@ -15,7 +15,8 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
  */
 public class CellularAutomata2D implements Runnable {
 
-  private static int[][] ph;
+  private static int[][] actualPh;
+  private static int[][] nextPh;
   private static int[][] actualGen, nextGen;
   private static int[] initialPopulation;
   public static AtomicIntegerArray population_counter;
