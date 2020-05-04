@@ -254,7 +254,7 @@ public class CellularAutomata2D implements Runnable {
     cellsAlive = actualGen[(i + 1 + height) % height][j]
             + actualGen[(i - 1 + height) % height][j]
             + actualGen[i][(j - 1 + width) % width]
-            + actualGen[i][(j - 1 + width) % width];
+            + actualGen[i][(j + 1 + width) % width];
 
     return cellsAlive;
   }
