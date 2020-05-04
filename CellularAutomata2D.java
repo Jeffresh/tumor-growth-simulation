@@ -410,13 +410,12 @@ public class CellularAutomata2D implements Runnable {
 
     }
     updatePosition(i,j, posI , posJ, nextGen, 1);
-
+    local_population_counter[nextGen[i][j]]++;
   }
 
   private static void updatePosition(int i, int j, int posI, int posJ, int[][] matrix, int value) {
     matrix[(i + posI + height) % height][(j + posJ + width) % width] = value;
   }
-
 
 
 
@@ -431,10 +430,22 @@ public class CellularAutomata2D implements Runnable {
     for (int i = 0; i < width; i++)
       for (int j = in; j < fn; j++) {
         if (abort) break;
-        nextGen[i][j] = getCellValue(i, j);
-        local_population_counter[nextGen[i][j]]++;
+        if (cellSurvives(i,j)) {
+          nextGen[i][j] = 1;
+          if (cellProliferates(i, j)) {
+            rr = Math.random();
+            int direction = getDirection(rr, i, j);
+            proliferates(i, j, direction);
+          } else if (cellMigrates()) {
+            rrm = Math.random();
+            int direction = getDirection(rrm, i, j);
+            migrates(i, j, direction);
+          }
+        } else {
+          nextPh[i][j] = 0;
+          nextGen[i][j] = 0;
+        }
       }
-
     return population;
   }
 }
