@@ -51,8 +51,8 @@ public class CellularAutomata2D implements Runnable {
   private static double pm = 0.2; // Probability of cell migration.
   private static double np = 1; // Total PH needed to proliferate.
   private static double scaleImage = 1;
-  private static double pd = 0; // Probability of cell death.
-  private static double pq = 1; // Probability of cell quiescence.
+  private static double pd ; // Probability of cell death.
+  private static double pq; // Probability of cell quiescence.
   private double rr = 1; // Random value to determine survival.
   private double rrm = 1; // Random value to determine migration.
   private double rrp = 1; // Random value to determine proliferation.
