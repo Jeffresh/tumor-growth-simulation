@@ -365,6 +365,9 @@ public class CellularAutomata2D implements Runnable {
   }
 
 
+  private static void updatePosition(int i, int j, int posI, int posJ, int[][] matrix, int value) {
+    matrix[(i + posI + height) % height][(j + posJ + width) % width] = value;
+  }
   public LinkedList<Double>[] nextGen(int actual_gen) {
 
     local_population_counter = new int[states_number];
