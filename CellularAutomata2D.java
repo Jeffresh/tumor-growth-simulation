@@ -381,7 +381,7 @@ public class CellularAutomata2D implements Runnable {
       }
     }
 
-    if(position != 0){
+    if(position != 0  && getPositionValue(i,j,posI, posJ,actualGen) != 1) {
       if(migration) {
         updatePosition(i,j,posI ,posJ,nextPh, actualPh[i][j]);
         updatePosition(i,j, 0, 0, nextGen, 0);
