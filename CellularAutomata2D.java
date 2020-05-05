@@ -340,12 +340,11 @@ public class CellularAutomata2D implements Runnable {
    if (0 < probability && probability <= P1(i,j))
      return 1;
    else if( probability <= P1(i,j)+ P2(i,j))
-     return 3;
-   else if(probability <= P1(i,j) + P2(i,j) + P3(i,j))
      return 2;
+   else if(probability <= P1(i,j) + P2(i,j) + P3(i,j))
+     return 3;
    else if(probability <=1 )
      return 4;
-
    return 0;
   }
 
