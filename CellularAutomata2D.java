@@ -399,9 +399,13 @@ public class CellularAutomata2D implements Runnable {
     }
 
 
+  private static int  getPositionValue(int i, int j, int posI, int posJ, int[][] matrix) {
+    return matrix[(i + posI + height) % height][(j + posJ + width) % width];
+
   }
 
-  private static void updatePosition(int i, int j, int posI, int posJ, int[][] matrix, int value) {
+
+    private static void updatePosition(int i, int j, int posI, int posJ, int[][] matrix, int value) {
     matrix[(i + posI + height) % height][(j + posJ + width) % width] = value;
   }
 
