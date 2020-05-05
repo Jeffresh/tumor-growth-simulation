@@ -50,7 +50,7 @@ public class CellularAutomata2D implements Runnable {
 
   private static int width, height;
 
-  public static int states_number = 2;
+  public static int states_number = 1;
   private static int cfrontier = 0;
   private static int seed;
   private static int cells_number;
