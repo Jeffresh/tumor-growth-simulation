@@ -426,6 +426,7 @@ public class CellularAutomata2D implements Runnable {
             rr = Math.random();
             int direction = getDirection(rr, i, j);
             proliferates(i, j, direction);
+            local_population_counter[0]++;
           } else if (cellMigrates()) {
             rrm = Math.random();
             int direction = getDirection(rrm, i, j);
