@@ -302,7 +302,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
     initializeButtonNames();
     initializeInputTextFieldsAndLabels();
 
-    JFrame frame = new JFrame("CA1D");
+    JFrame frame = new JFrame("Tumor Growth");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setMinimumSize(new Dimension(500, 500));
     frame.setJMenuBar(new GuiTumorGrowth().createNavBar());
