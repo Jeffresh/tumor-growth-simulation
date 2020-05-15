@@ -16,8 +16,8 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 public class CellularAutomata2D implements Runnable {
 
   private static int[][] actualPh;
-  private static int[][] nextPh;
-  private static int[][] actualGen, nextGen;
+//  private static int[][] nextPh;
+  private static int[][] actualGen;
   private static int[] initialPopulation;
   public static AtomicIntegerArray population_counter;
   private int[] local_population_counter;
@@ -37,12 +37,12 @@ public class CellularAutomata2D implements Runnable {
     population_chart_ref = ref;
   }
 
-  public static void changeRefs() {
-    actualPh = nextPh;
-    nextPh = new int[height][width];
-    actualGen = nextGen;
-    nextGen = new int[height][width];
-  }
+//  public static void changeRefs() {
+//    actualPh = nextPh;
+//    nextPh = new int[height][width];
+//    actualGen = nextGen;
+//    nextGen = new int[height][width];
+//  }
 
   public static void stop() {
     abort = true;
@@ -96,8 +96,7 @@ public class CellularAutomata2D implements Runnable {
         l = barrier.await();
 
         if (this.task_number == 1) {
-          canvasTemplateRef.revalidate();
-          canvasTemplateRef.repaint();
+
           Thread.sleep(0, 10);
 
           for (int j = 0; j < states_number; j++) {
@@ -107,7 +106,10 @@ public class CellularAutomata2D implements Runnable {
 
           if (CellularAutomata2D.population_chart_ref != null)
             CellularAutomata2D.population_chart_ref.plot();
-          changeRefs();
+//          changeRefs();
+          canvasTemplateRef.revalidate();
+          canvasTemplateRef.repaint();
+
         }
 
         if (barrier.getParties() == 0) barrier.reset();
@@ -207,9 +209,9 @@ public class CellularAutomata2D implements Runnable {
     height = cells_number;
 
     actualGen = new int[height][width];
-    nextGen = new int[height][width];
+//    nextGen = new int[height][width];
     actualPh = new int[height][width];
-    nextPh = new int[height][width];
+//    nextPh = new int[height][width];
 
 
     population_counter = new AtomicIntegerArray(states_number);
