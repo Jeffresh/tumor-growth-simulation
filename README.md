@@ -1,6 +1,9 @@
 # Tumor growth simulation
 Tumor growth simulation using 2D cellular automaton implemented in Java
 
+
+![Gui](assets/imageDemo.jpg "title")
+
 # Parameters
 
 | Variables  | Definition |
