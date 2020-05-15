@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
  * @author: Jeffrey Pallarés Núñez.
  * @version: 1.0 23/07/19
  */
-public class CellularAutomata2D implements Runnable {
+public class TumoralGrowth implements Runnable {
 
   private static int[][] actualPh;
 //  private static int[][] nextPh;
@@ -104,8 +104,8 @@ public class CellularAutomata2D implements Runnable {
           }
           population_counter = new AtomicIntegerArray(states_number);
 
-          if (CellularAutomata2D.population_chart_ref != null)
-            CellularAutomata2D.population_chart_ref.plot();
+          if (TumoralGrowth.population_chart_ref != null)
+            TumoralGrowth.population_chart_ref.plot();
 //          changeRefs();
           canvasTemplateRef.revalidate();
           canvasTemplateRef.repaint();
@@ -124,9 +124,9 @@ public class CellularAutomata2D implements Runnable {
   }
 
 
-  public CellularAutomata2D() {}
+  public TumoralGrowth() {}
 
-  public CellularAutomata2D(int i) {
+  public TumoralGrowth(int i) {
     task_number = i;
 
     int paso = cells_number / total_tasks;
@@ -216,22 +216,22 @@ public class CellularAutomata2D implements Runnable {
 
     population_counter = new AtomicIntegerArray(states_number);
 
-    CellularAutomata2D.cells_number = cells_number;
-    CellularAutomata2D.generations = generations;
-    CellularAutomata2D.cfrontier = cfrontier;
-    CellularAutomata2D.initializerMode = initializerMode;
+    TumoralGrowth.cells_number = cells_number;
+    TumoralGrowth.generations = generations;
+    TumoralGrowth.cfrontier = cfrontier;
+    TumoralGrowth.initializerMode = initializerMode;
 
-    CellularAutomata2D.ps = ps;
-    CellularAutomata2D.pp = pp;
-    CellularAutomata2D.pm = pm;
-    CellularAutomata2D.np = np;
-    CellularAutomata2D.pd = 1 - ps;
-    CellularAutomata2D.pq = 1 - pm - pp;
+    TumoralGrowth.ps = ps;
+    TumoralGrowth.pp = pp;
+    TumoralGrowth.pm = pm;
+    TumoralGrowth.np = np;
+    TumoralGrowth.pd = 1 - ps;
+    TumoralGrowth.pq = 1 - pm - pp;
 
     population = new LinkedList[states_number];
     initialPopulation = new int[states_number];
 
-    CellularAutomata2D.initializeState(initializerMode);
+    TumoralGrowth.initializeState(initializerMode);
     for (int i = 0; i < states_number; i++) {
       population[i] = new LinkedList<Double>();
     }
@@ -239,8 +239,8 @@ public class CellularAutomata2D implements Runnable {
     for (int j = 0; j < states_number; j++) {
       population[j].add((double) initialPopulation[j]);
     }
-    if (CellularAutomata2D.population_chart_ref != null)
-      CellularAutomata2D.population_chart_ref.plot();
+    if (TumoralGrowth.population_chart_ref != null)
+      TumoralGrowth.population_chart_ref.plot();
   }
 
 
@@ -314,10 +314,10 @@ public class CellularAutomata2D implements Runnable {
                     60000L,
                     TimeUnit.MILLISECONDS,
                     new LinkedBlockingQueue<Runnable>());
-    CellularAutomata2D[] tareas = new CellularAutomata2D[nt];
+    TumoralGrowth[] tareas = new TumoralGrowth[nt];
 
     for (int t = 0; t < nt; t++) {
-      tareas[t] = new CellularAutomata2D(t + 1);
+      tareas[t] = new TumoralGrowth(t + 1);
       myPool.execute(tareas[t]);
     }
 

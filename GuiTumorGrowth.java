@@ -431,7 +431,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
       if (cilindric_frontier_buttons.get("Yes").isSelected()) cfrontier = 1;
       else cfrontier = 0;
       System.out.println("Cfrontier " + cfrontier);
-      MainCanvas.task = new CellularAutomata2D();
+      MainCanvas.task = new TumoralGrowth();
       MainCanvas.task.plug(canvas_template);
       MainCanvas.task.initializer(
           cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
@@ -482,7 +482,7 @@ public class GuiTumorGrowth extends Frame implements ActionListener, FocusListen
     if (e.getSource() == gui_buttons.get(buttons_names[2])) {
       worker.cancel(true);
       worker.cancel(false);
-      CellularAutomata2D.stop();
+      TumoralGrowth.stop();
     }
   }
 

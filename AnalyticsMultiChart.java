@@ -5,7 +5,6 @@ import org.knowm.xchart.XYChart;
 import javax.swing.*;
 
 import org.knowm.xchart.*;
-import org.knowm.xchart.style.markers.None;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 /**
@@ -16,7 +15,7 @@ public class AnalyticsMultiChart {
     public  JPanel population_chart_panel;
     public  XYChart population_chart;
     public  JFrame chart_frame;
-    public CellularAutomata2D CA1Dref;
+    public TumoralGrowth CA1Dref;
     private  String chart_title;
     private  LinkedList<Double>[] fifo_population;
 
@@ -37,7 +36,7 @@ public class AnalyticsMultiChart {
         population_chart = createChart(chart_title, x_axis_name, y_axis_name);
     }
 
-    public void setRef(CellularAutomata2D ref) {
+    public void setRef(TumoralGrowth ref) {
         CA1Dref = ref;
     }
 
