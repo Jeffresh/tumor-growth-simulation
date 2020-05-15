@@ -420,22 +420,27 @@ public class CellularAutomata2D implements Runnable {
 
     for (int i = 0; i < width; i++) {
       for (int j = in; j < fn; j++) {
+
         if (abort) break;
         if (cellSurvives(i, j)) {
-          nextGen[i][j] = 1;
+
           if (cellProliferates(i, j)) {
-            rr = Math.random();
-            int direction = getDirection(rr, i, j);
+
+            rrp = Math.random();
+            int direction = getDirection(rrp, i, j);
             proliferates(i, j, direction);
             local_population_counter[0]++;
+
           } else if (cellMigrates()) {
+
             rrm = Math.random();
             int direction = getDirection(rrm, i, j);
             migrates(i, j, direction);
           }
-        } else {
-          nextPh[i][j] = 0;
-          nextGen[i][j] = 0;
+
+        } else if(actualGen[i][j]!=0) {
+          actualPh[i][j] = 0;
+          actualGen[i][j]=0;
         }
       }
     }
