@@ -383,19 +383,20 @@ public class CellularAutomata2D implements Runnable {
 
     if(position != 0  && getPositionValue(i,j,posI, posJ,actualGen) != 1) {
       if(migration) {
-        updatePosition(i,j,posI ,posJ,nextPh, actualPh[i][j]);
-        updatePosition(i,j, 0, 0, nextGen, 0);
-        local_population_counter[0]++;
+        updatePosition(i,j,posI ,posJ,actualPh, actualPh[i][j]);
+        updatePosition(i,j, 0, 0, actualGen, 0);
       }
       else {
-        updatePosition(i,j,posI ,posJ,nextPh, 0);
-        updatePosition(i,j, 0, 0, nextGen, 1);
+        updatePosition(i,j,posI ,posJ,actualPh, 0);
+        updatePosition(i,j, 0, 0, actualGen, 1);
 
       }
-      updatePosition(i,j,0 ,0,nextPh, 0);
-      updatePosition(i,j, posI , posJ, nextGen, 1);
-      local_population_counter[nextGen[i][j]]++;
+      updatePosition(i,j,0 ,0,actualPh, 0);
+      updatePosition(i,j, posI , posJ, actualGen, 1);
     }
+
+
+  }
 
 
   private static int  getPositionValue(int i, int j, int posI, int posJ, int[][] matrix) {
